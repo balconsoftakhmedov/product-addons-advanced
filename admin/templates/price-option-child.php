@@ -43,7 +43,7 @@ $option_default           = isset( $option['default'] ) ? $option['default'] : 0
 	<div class="wpc-label-item wpc-pro-pao-option-default-wrap <?php echo ( $pao_type != 'text' ) ? 'show_block' : 'hide_block'; ?>">
 		<div class="wpc-meta wpc-pro-pao-option-default">
 			<input type="radio" class="" id="wpc_pro_pao_option_default_<?php echo esc_attr( $counter ); ?>_<?php echo esc_attr( $option_index ); ?>"  name="wpc_pro_pao_option_default[<?php echo esc_attr( $counter ); ?>][]" value="<?php echo esc_attr( $option_index ); ?>" <?php checked( 1, $option_default ); ?> />
-			<label for="wpc_pro_pao_option_default_<?php echo esc_attr( $counter ); ?>_<?php echo esc_attr( $option_index ); ?>"><?php esc_html_e( 'Default ggselected', 'wpcafe-pro' ); ?></label>
+			<label for="wpc_pro_pao_option_default_<?php echo esc_attr( $counter ); ?>_<?php echo esc_attr( $option_index ); ?>"><?php esc_html_e( 'Default selected', 'wpcafe-pro' ); ?></label>
 		</div>
 	</div>
 <?php if( intval( $option_index ) !== 0 ): ?>
@@ -52,5 +52,4 @@ $option_default           = isset( $option['default'] ) ? $option['default'] : 0
 	</button>
 <?php endif; ?>
 
-<?php  require( 'fields-area-child.php' ); ?>
 </div>

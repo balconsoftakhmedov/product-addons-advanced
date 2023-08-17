@@ -27,8 +27,8 @@ if ( !isset( $pao['options'] ) ) {
 		);
 }
 ?>
-
-<div class="wpc-pro-pao-fields">
+rrrr
+<div class="wpc-pro-pao-fields">ssssssssssssssss
 	<div class="wpc-pro-pao-header">
 		<div class="wpc-pro-pao-header-section1">
 			<span class="wpc-pro-pao-sort-handle dashicons dashicons-menu"></span>
@@ -193,7 +193,7 @@ if ( !isset( $pao['options'] ) ) {
 											$option_price_type = ! empty( $option['price_type'] ) ? $option['price_type'] : 'flat_fee';
 											$option_price      = ! empty( $option['price'] ) ? $option['price'] : '';
 
-											include( dirname( __FILE__ ) . '/price-option.php' );
+											include( dirname( __FILE__ ) . '/price-option-child.php' );
 									}
 							}
 							?>
@@ -205,4 +205,3 @@ if ( !isset( $pao['options'] ) ) {
 			</div>
 	</div>
 </div>
-
