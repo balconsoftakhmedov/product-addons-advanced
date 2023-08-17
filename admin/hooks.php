@@ -30,7 +30,7 @@ class Hooks {
 		add_action( 'wp_ajax_add_pao', [ $this, 'add_pao_fields' ] );
 		add_action( 'wp_ajax_nopriv_add_pao', [ $this, 'add_pao_fields' ] );
 
-		add_action( 'init', [ $this,'labtag_yith_remove_actions'] );
+		//add_action( 'init', [ $this,'labtag_yith_remove_actions'] );
 	}
 
 	function labtag_yith_remove_actions() {
@@ -55,8 +55,8 @@ class Hooks {
 	 * Create submenu for addons.
 	 */
 	public function admin_sub_menu_page() {
-		if ( file_exists(\Wpcafe_Pro::core_dir() . "modules/product-addons/admin/templates/settings/settings.php")) {
-			include_once \Wpcafe_Pro::core_dir() . "modules/product-addons/admin/templates/settings/settings.php";
+		if ( file_exists(\Wpcafe_Pro::core_dir() . "modules/product-addons-advanced/admin/templates/settings/settings.php")) {
+			include_once \Wpcafe_Pro::core_dir() . "modules/product-addons-advanced/admin/templates/settings/settings.php";
 		}
 	}
 
@@ -64,7 +64,7 @@ class Hooks {
 	 * enqueue all css and js with localization data
 	 */
 	public function admin_enqueue_assets() {
-		wp_enqueue_script( 'wpc_pro_pao', \Wpcafe_Pro::core_url() . 'modules/product-addons/assets/js/admin.js', ['jquery'], \Wpcafe_Pro::version(), true );
+		wp_enqueue_script( 'wpc_pro_pao', \Wpcafe_Pro::core_url() . 'modules/product-addons-advanced/assets/js/admin.js', ['jquery'], \Wpcafe_Pro::version(), true );
 
 		$translation_data = [
 				'ajax_url'              => admin_url( 'admin-ajax.php' ),

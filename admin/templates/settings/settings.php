@@ -84,8 +84,8 @@
 							</div>
 								<?php
 								$addon_section = 'global';
-								$product_paos  = \WpCafe_Pro\Core\Modules\Product_Addons\Admin\Hooks::instance()->process_addon_data( $addons_field );
-								include_once \Wpcafe_Pro::core_dir() . "modules/product-addons/admin/templates/fields-area.php";
+								$product_paos  = \WpCafe_Pro\Core\Modules\Product_Addons_Advanced\Admin\Hooks::instance()->process_addon_data( $addons_field );
+								include_once \Wpcafe_Pro::core_dir() . "modules/product-addons-advanced/admin/templates/fields-area.php";
 								?>
 						<?php
 						}

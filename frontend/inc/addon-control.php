@@ -56,10 +56,10 @@
 
 					$addon['field_name'] = sanitize_title( $post_id . '-' . $addon['title'] . '-' . $counter );
 					wc_get_template( 'templates/addon-start.php', ['addon' => $addon],
-						'wpcafe-pro', \Wpcafe_Pro::plugin_dir() . '/core/modules/product-addons/frontend/' );
+						'wpcafe-pro', \Wpcafe_Pro::plugin_dir() . '/core/modules/product-addons-advanced/frontend/' );
 
 					echo Wpc_Utilities::wpc_render( $this->get_wpc_addon_html( $addon ) );
-					wc_get_template( 'templates/addon-end.php', ['addon' => $addon], 'wpcafe-pro', \Wpcafe_Pro::plugin_dir() . '/core/modules/product-addons/frontend/' );
+					wc_get_template( 'templates/addon-end.php', ['addon' => $addon], 'wpcafe-pro', \Wpcafe_Pro::plugin_dir() . '/core/modules/product-addons-advanced/frontend/' );
 
 					$counter++;
 				}
@@ -182,24 +182,24 @@
 				}
 
 				public function get_wpc_addon_checkbox_html( $addon ) {
-					wc_get_template( 'templates/parts/checkbox.php', ['addon' => $addon], 'wpcafe-pro', \Wpcafe_Pro::plugin_dir() . '/core/modules/product-addons/frontend/' );
+					wc_get_template( 'templates/parts/checkbox.php', ['addon' => $addon], 'wpcafe-pro', \Wpcafe_Pro::plugin_dir() . '/core/modules/product-addons-advanced/frontend/' );
 				}
 
 				public function get_wpc_addon_radio_html( $addon ) {
-					wc_get_template( 'templates/parts/radio.php', ['addon' => $addon], 'wpcafe-pro', \Wpcafe_Pro::plugin_dir() . '/core/modules/product-addons/frontend/' );
+					wc_get_template( 'templates/parts/radio.php', ['addon' => $addon], 'wpcafe-pro', \Wpcafe_Pro::plugin_dir() . '/core/modules/product-addons-advanced/frontend/' );
 				}
 
 				public function get_wpc_addon_dropdown_html( $addon ) {
-					wc_get_template( 'templates/parts/select.php', ['addon' => $addon], 'wpcafe-pro', \Wpcafe_Pro::plugin_dir() . '/core/modules/product-addons/frontend/' );
+					wc_get_template( 'templates/parts/select.php', ['addon' => $addon], 'wpcafe-pro', \Wpcafe_Pro::plugin_dir() . '/core/modules/product-addons-advanced/frontend/' );
 				}
 
 				public function get_wpc_addon_text_html( $addon ) {
-					wc_get_template( 'templates/parts/text.php', ['addon' => $addon], 'wpcafe-pro', \Wpcafe_Pro::plugin_dir() . '/core/modules/product-addons/frontend/' );
+					wc_get_template( 'templates/parts/text.php', ['addon' => $addon], 'wpcafe-pro', \Wpcafe_Pro::plugin_dir() . '/core/modules/product-addons-advanced/frontend/' );
 				}
 
 				public function wpc_addon_scripts() {
 
-					wp_enqueue_script( 'wpc-addons', \Wpcafe_Pro::plugin_url() . '/core/modules/product-addons/assets/js/addons.js', ['jquery'], \Wpcafe_Pro::version(), true );
+					wp_enqueue_script( 'wpc-addons', \Wpcafe_Pro::plugin_url() . '/core/modules/product-addons-advanced/assets/js/addons.js', ['jquery'], \Wpcafe_Pro::version(), true );
 					$params = [
 						'ajax_url' => admin_url( 'admin-ajax.php' ),
 					];

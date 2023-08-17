@@ -183,7 +183,7 @@ class Product_Addons_Field_List extends Product_Addons_Field implements Check, S
 		}
 
 		if ( $is_global_addon_product ) {
-			$global_addon_data = \WpCafe_Pro\Core\Modules\Product_Addons\Admin\Hooks::instance()->process_addon_data( $settings );
+			$global_addon_data = \WpCafe_Pro\Core\Modules\Product_Addons_Advanced\Admin\Hooks::instance()->process_addon_data( $settings );
 		}
 
 		return $global_addon_data;
