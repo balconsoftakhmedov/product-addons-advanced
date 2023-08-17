@@ -26,8 +26,20 @@ class CartHooks {
 
 		add_action( 'woocommerce_checkout_create_order_line_item', [ $this, 'order_line_item' ], 10, 3 );
 		add_action( 'woocommerce_after_cart_item_quantity_update', [ $this, 'update_price_on_quantity_update' ], 20, 4 );
-
+		add_action( 'init', [ $this,'labtag_yith_remove_actions'] );
     }
+
+	function labtag_yith_remove_actions() {
+		$hooks_instance = \WpCafe_Pro\Core\Modules\Product_Addons_Advanced\Frontend\Inc\CartHooks::instance();
+		remove_filter( 'woocommerce_add_cart_item_data', [ $hooks_instance, 'add_cart_item_data' ], 20, 2 );
+		remove_filter( 'woocommerce_add_cart_item', [ $hooks_instance, 'add_cart_item' ], 20 );
+		remove_filter( 'woocommerce_get_item_data', [ $hooks_instance, 'get_item_data' ], 10, 2 );
+		remove_filter( 'woocommerce_get_cart_item_from_session', [ $hooks_instance, 'get_cart_item_from_session' ], 20, 2 );
+		remove_filter( 'woocommerce_hidden_order_itemmeta', [ $hooks_instance, 'hide_order_itemmeta_to_show' ], 10, 1 );
+		remove_action( 'woocommerce_checkout_create_order_line_item', [ $hooks_instance, 'order_line_item' ], 10, 3 );
+		remove_action( 'woocommerce_after_cart_item_quantity_update', [ $hooks_instance, 'update_price_on_quantity_update' ], 20, 4 );
+
+	}
 
 	/**
 	 * Updating cart price and adding addons price

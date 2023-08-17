@@ -20,8 +20,15 @@
 			if ( class_exists( 'WooCommerce' ) ) {
 				add_action( 'wp_enqueue_scripts', [$this, 'wpc_addon_scripts'] );
 				add_action( 'woocommerce_before_add_to_cart_button', [$this, 'show_customizable_options'] );
+				add_action( 'init', [ $this,'labtag_yith_remove_actions'] );
 			}
 		}
+
+		function labtag_yith_remove_actions() {
+		$hooks_instance = \WpCafe_Pro\Core\Modules\Product_Addons_Advanced\Frontend\Inc\Addon_Control::instance();
+		remove_action( 'wp_enqueue_scripts', [$hooks_instance, 'wpc_addon_scripts'] );
+		remove_action( 'woocommerce_before_add_to_cart_button', [$hooks_instance, 'show_customizable_options'] );
+	}
 
 		/**
 		 * Addons list.

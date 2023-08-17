@@ -17,6 +17,9 @@ class Hooks {
 				\WpCafe_Pro\Core\Modules\Product_Addons_Advanced\Frontend\Inc\CartHooks::instance()->init();
 				// display templates.
 				\WpCafe_Pro\Core\Modules\Product_Addons_Advanced\Frontend\Inc\Addon_Control::instance()->init();
+
 			}
 		}
+
+
 }

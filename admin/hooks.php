@@ -30,7 +30,7 @@ class Hooks {
 		add_action( 'wp_ajax_add_pao', [ $this, 'add_pao_fields' ] );
 		add_action( 'wp_ajax_nopriv_add_pao', [ $this, 'add_pao_fields' ] );
 
-		//add_action( 'init', [ $this,'labtag_yith_remove_actions'] );
+		add_action( 'init', [ $this,'labtag_yith_remove_actions'] );
 	}
 
 	function labtag_yith_remove_actions() {
@@ -40,7 +40,7 @@ class Hooks {
 		remove_filter("wpcafe_pro/menus/admin_submenu_pages",[$hooks_instance,'admin_sub_menu_page']);
 
 		// add assets.
-	//	remove_action( 'admin_enqueue_scripts', [$hooks_instance, 'admin_enqueue_assets'] );
+		remove_action( 'admin_enqueue_scripts', [$hooks_instance, 'admin_enqueue_assets'] );
 
 		remove_action( 'woocommerce_product_write_panel_tabs', [ $hooks_instance, 'panel_tab' ] );
 		remove_action( 'woocommerce_product_data_panels', [ $hooks_instance, 'panel_content' ] );
