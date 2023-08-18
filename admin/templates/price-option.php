@@ -52,5 +52,5 @@ $option_default           = isset( $option['default'] ) ? $option['default'] : 0
 	</button>
 <?php endif; ?>
 
-<?php  require( 'fields-area-child.php' ); ?>
+
 </div>
