@@ -139,6 +139,9 @@ class Hooks {
 			$pao_option_label          = $content['wpc_pro_pao_option_label'];
 			$pao_option_price          = $content['wpc_pro_pao_option_price'];
 			$pao_option_price_type     = $content['wpc_pro_pao_option_price_type'];
+
+			$wpc_pro_pao_option_products     = $content['wpc_pro_pao_option_products'];
+
 			$pao_option_default        = isset( $content['wpc_pro_pao_option_default'] ) ? $content['wpc_pro_pao_option_default'] : []; // radio
 			$pao_position              = isset( $content['wpc_pro_pao_position'] ) ? $content['wpc_pro_pao_position'] : []; // for sort situation.
 
@@ -186,6 +189,7 @@ class Hooks {
 				$data                 = [];
 								$data['type']         = $this->clean_field( $pao_type[ $i ] );
 				$data['title']        = $this->clean_field( $pao_title[ $i ] );
+				$data['wpc_pro_pao_option_products'] = $wpc_pro_pao_option_products[ $i ];
 								$data['title_format'] = $this->clean_field( $pao_title_format[ $i ] );
 								$data['place_holder'] = isset( $pao_place_holder[ $i ] ) ? $this->clean_field( $pao_place_holder[ $i ] ) : '';
 								$data['char_limit']   = isset( $pao_char_limit_enable[ $i ] ) ? 1 : 0;

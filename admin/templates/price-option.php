@@ -62,7 +62,7 @@ $option_default           = isset( $option['default'] ) ? $option['default'] : 0
 		$products = get_posts( $args );
 		?>
 
-		<select name="wpc_pro_pao_option_price_type[<?php echo esc_attr( $counter ); ?>][]" class="wpc-settings-input wpc-pro-pao-option-price-type" multiple>
+		<select name="wpc_pro_pao_option_products[<?php echo esc_attr( $counter ); ?>][]" class="wpc-settings-input wpc-pro-pao-option-price-type" multiple>
 			<?php
 			foreach ( $product_attrs as $key => $value ) {
 
