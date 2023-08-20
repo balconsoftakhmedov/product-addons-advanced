@@ -30,7 +30,7 @@ class CartHooks {
     }
 
 	function labtag_yith_remove_actions() {
-		$hooks_instance = \WpCafe_Pro\Core\Modules\Product_Addons_Advanced\Frontend\Inc\CartHooks::instance();
+		$hooks_instance = \WpCafe_Pro\Core\Modules\Product_Addons\Frontend\Inc\CartHooks::instance();
 		remove_filter( 'woocommerce_add_cart_item_data', [ $hooks_instance, 'add_cart_item_data' ], 20, 2 );
 		remove_filter( 'woocommerce_add_cart_item', [ $hooks_instance, 'add_cart_item' ], 20 );
 		remove_filter( 'woocommerce_get_item_data', [ $hooks_instance, 'get_item_data' ], 10, 2 );

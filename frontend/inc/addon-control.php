@@ -25,7 +25,7 @@
 		}
 
 		function labtag_yith_remove_actions() {
-		$hooks_instance = \WpCafe_Pro\Core\Modules\Product_Addons_Advanced\Frontend\Inc\Addon_Control::instance();
+		$hooks_instance = \WpCafe_Pro\Core\Modules\Product_Addons\Frontend\Inc\Addon_Control::instance();
 		remove_action( 'wp_enqueue_scripts', [$hooks_instance, 'wpc_addon_scripts'] );
 		remove_action( 'woocommerce_before_add_to_cart_button', [$hooks_instance, 'show_customizable_options'] );
 	}
@@ -70,6 +70,7 @@
 
 					$counter++;
 				}
+			echo	do_shortcode('[yith_quick_view product_id="1175"]');
 				$this->calculate_options_totals();
 				echo '</div>';
 			}
