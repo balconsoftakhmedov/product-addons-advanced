@@ -71,7 +71,7 @@
 
 					$counter++;
 				}
-			echo	do_shortcode('[flance_quick_view product_id="1177"]');
+				echo	do_shortcode('[flance_quick_view product_id="1177"]');
 				$this->calculate_options_totals();
 				echo '</div>';
 			}

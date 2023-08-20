@@ -52,7 +52,8 @@ if ( !isset( $pao['options'] ) ) {
 											'checkbox' => esc_html__( 'Checkbox', 'wpcafe-pro' ),
 											'radio'    => esc_html__( 'Radio', 'wpcafe-pro' ),
 											'dropdown' => esc_html__( 'Dropdown', 'wpcafe-pro' ), 
-											'text'     => esc_html__( 'Long Text', 'wpcafe-pro' ), 
+											'text'     => esc_html__( 'Long Text', 'wpcafe-pro' ),
+											'rec_product'     => esc_html__( 'Recommended Products', 'wpcafe-pro' ),
 									];
 							?>
 							<select id="wpc_pro_pao_type_<?php echo esc_attr( $counter ); ?>" class="wpc-settings-input wpc_pro_pao_type wpc_pro_pao_type_<?php echo esc_attr( $counter ); ?>" name="wpc_pro_pao_type[<?php echo esc_attr( $counter ); ?>]">
@@ -192,8 +193,7 @@ if ( !isset( $pao['options'] ) ) {
 											$option_label      = ! empty( $option['label'] ) ? $option['label'] : '';
 											$option_price_type = ! empty( $option['price_type'] ) ? $option['price_type'] : 'flat_fee';
 											$option_price      = ! empty( $option['price'] ) ? $option['price'] : '';
-
-											include( dirname( __FILE__ ) . '/price-option.php' );
+									include( dirname( __FILE__ ) . '/price-option.php' );
 									}
 							}
 							?>
