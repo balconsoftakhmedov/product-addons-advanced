@@ -20,6 +20,7 @@
 			if ( class_exists( 'WooCommerce' ) ) {
 				add_action( 'wp_enqueue_scripts', [$this, 'wpc_addon_scripts'] );
 				add_action( 'woocommerce_before_add_to_cart_button', [$this, 'show_customizable_options'] );
+				add_action( 'flance_woocommerce_before_add_to_cart_button', [$this, 'flance_show_customizable_options'] );
 				add_action( 'init', [ $this,'labtag_yith_remove_actions'] );
 			}
 		}
@@ -70,8 +71,52 @@
 
 					$counter++;
 				}
-			echo	do_shortcode('[yith_quick_view product_id="1175"]');
+			echo	do_shortcode('[flance_quick_view product_id="1177"]');
 				$this->calculate_options_totals();
+				echo '</div>';
+			}
+		}
+		/**
+		 * Addons list.
+		 *
+		 * @param [type] $post_id get params.
+		 * @param [type] $prefix get params.
+		 */
+		public function flance_show_customizable_options( $post_id = false, $prefix = false ) {
+			global $product;
+
+			if ( ! $post_id ) {
+				global $post;
+				$post_id = $post->ID;
+			}
+
+			$supported_types = [
+				'simple',
+				'variable',
+			];
+
+			// right now, only supported types are simple, variable
+			if ( ! in_array( $product->get_type(), $supported_types ) ) {
+				return;
+			}
+
+			$wpc_addons = $this->all_addons_list( $post_id, $prefix = false );
+
+			if ( is_array( $wpc_addons ) && count( $wpc_addons ) > 0 ) {
+				echo '<div class="wpc-addons-container">';
+				$counter = 0;
+				foreach ( $wpc_addons as $addon ) {
+
+					$addon['field_name'] = sanitize_title( $post_id . '-' . $addon['title'] . '-' . $counter );
+					wc_get_template( 'templates/addon-start.php', ['addon' => $addon],
+						'wpcafe-pro', \Wpcafe_Pro::plugin_dir() . '/core/modules/product-addons-advanced/frontend/' );
+
+					echo Wpc_Utilities::wpc_render( $this->get_wpc_addon_html( $addon ) );
+					wc_get_template( 'templates/addon-end.php', ['addon' => $addon], 'wpcafe-pro', \Wpcafe_Pro::plugin_dir() . '/core/modules/product-addons-advanced/frontend/' );
+
+					$counter++;
+				}
+
 				echo '</div>';
 			}
 		}
