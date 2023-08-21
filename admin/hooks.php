@@ -112,7 +112,11 @@ class Hooks {
 
 		$product = wc_get_product( $post_id );
 		$product->update_meta_data( '_wpc_pro_pao_data', $pao_data );
+		$wpc_addons = array_filter( (array) $product->get_meta( '_wpc_pro_pao_data' ) );
+
 		$product->save();
+
+
 	}
 
 	/**

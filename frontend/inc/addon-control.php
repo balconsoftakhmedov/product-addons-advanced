@@ -71,7 +71,7 @@
 
 					$counter++;
 				}
-				echo	do_shortcode('[flance_quick_view product_id="1177"]');
+
 				$this->calculate_options_totals();
 				echo '</div>';
 			}
@@ -116,7 +116,6 @@
 
 					$counter++;
 				}
-
 				echo '</div>';
 			}
 		}
@@ -248,6 +247,10 @@
 
 				public function get_wpc_addon_text_html( $addon ) {
 					wc_get_template( 'templates/parts/text.php', ['addon' => $addon], 'wpcafe-pro', \Wpcafe_Pro::plugin_dir() . '/core/modules/product-addons-advanced/frontend/' );
+				}
+				public function get_wpc_addon_rec_product_html( $addon ) {
+
+					wc_get_template( 'templates/parts/rec_product.php', ['addon' => $addon], 'wpcafe-pro', \Wpcafe_Pro::plugin_dir() . '/core/modules/product-addons-advanced/frontend/' );
 				}
 
 				public function wpc_addon_scripts() {

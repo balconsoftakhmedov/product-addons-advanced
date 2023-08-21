@@ -28,6 +28,7 @@ class Addon_Helper {
 
 		$wpc_addons = array_filter( (array) $product->get_meta( '_wpc_pro_pao_data' ) );
 
+
 		$raw_wpc_addons[100]['product'] = apply_filters( 'get_wpc_paos_fields', $wpc_addons, $post_id );
 
 		if ( $inc_parent && $parent_id ) {
