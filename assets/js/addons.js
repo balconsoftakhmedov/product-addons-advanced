@@ -1,4 +1,4 @@
- 
+
 jQuery(function ($) {
 	"use strict";
 
@@ -25,16 +25,41 @@ function totalCalc($) {
 // calculation of total option selection value and total price value
 function calculateOptionsTotalPrice($,classNameTotal) {
 	let optionPrice = 0;
-	$('.wpc-addon-field:checked, .wpc-addon-field :selected, .wpc-addon-text').each(function(){
+
+	$('.wpc-addon-field:checked:not(.yith-wcqv-wrapper .wpc-addon-field)').each(function () {
 		var current_this = $(this);
 
-		if (current_this.is("textarea") && $.trim(current_this.val()).length == 0) {
+		if (current_this.is("textarea") && $.trim(current_this.val()).length === 0) {
 			return;
 		}
 
 		var fieldPrice = Number(current_this.attr('data-price'));
+
+		var jsonDataString = current_this.attr('data-json');
+		console.log('jsonDataString',jsonData);
+		if (jsonDataString) {
+			try {
+				var jsonData = JSON.parse(jsonDataString);
+				console.log('jsonData:', jsonData);
+
+				if (Array.isArray(jsonData)) {
+					jsonData.forEach(function (parsedData) {
+						if (parsedData.field_price) {
+							optionPrice += Number(parsedData.field_price);
+						}
+					});
+				}
+			} catch (error) {
+				console.error('Error parsing JSON:', error);
+			}
+			console.log('field_pr:', optionPrice);
+		}
+
 		optionPrice += fieldPrice;
 	});
+
+	console.log('optionPrice', optionPrice);
+
 
 	var discount_product 		= parseInt( $('.wpc-product-totals').data('discount-product') );
 	var discount_percentage 	= parseInt( $('.wpc-product-totals').data('discount-percentage') );

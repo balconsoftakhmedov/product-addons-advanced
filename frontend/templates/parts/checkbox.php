@@ -24,7 +24,9 @@ if ( $required ) { ?>
 				<input type="checkbox" <?php echo ( $required ) ? 'required' : '' ; ?> class="wpc-addon-field wpc-addon-checkbox"
 					name="wpc_addon-<?php echo sanitize_title( $field_name ); ?>[]" value="<?php echo sanitize_title( $opt_label ); ?>"
 					data-price-type="<?php echo esc_attr( $price_type ); ?>" data-price="<?php echo esc_attr( $price_display ); ?>"
-					data-label="<?php echo esc_attr( wptexturize( $opt_label ) ); ?>" <?php checked( 1, $opt_default ); ?> />
+					data-label="<?php echo esc_attr( wptexturize( $opt_label ) ); ?>" <?php checked( 1, $opt_default ); ?>
+					data-jsondata='{}'
+				/>
 					<span class="wpc-veriation-attribute">
 					<?php echo wptexturize( $opt_label . ' ' . $price_for_display ); ?>
 				</span>

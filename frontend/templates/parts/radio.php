@@ -12,7 +12,12 @@ if( $required == false ) { ?>
 	<!-- add none option to unselect other radio option -->
 	<div class="wpc-addon-wrap wpc-addon-<?php echo sanitize_title( $field_name ); ?>">
 		<label>
-			<input type="radio" class="wpc-addon-field wpc-addon-radio" name="wpc_addon-<?php echo sanitize_title( $field_name ); ?>[]" data-price="0" value="" />
+			<input type="radio"
+				   class="wpc-addon-field wpc-addon-radio"
+				   name="wpc_addon-<?php echo sanitize_title( $field_name ); ?>[]"
+				   data-price="0" value=""
+					data-jsondata='{}'
+			/>
 			<span class="wpc-veriation-attribute">
 				<?php esc_html_e( ' None', 'wpcafe-pro' ); ?>
 			</span>
