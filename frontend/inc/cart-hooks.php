@@ -27,6 +27,10 @@ class CartHooks {
 		add_action( 'woocommerce_checkout_create_order_line_item', [ $this, 'order_line_item' ], 10, 3 );
 		add_action( 'woocommerce_after_cart_item_quantity_update', [ $this, 'update_price_on_quantity_update' ], 20, 4 );
 		add_action( 'init', [ $this,'labtag_yith_remove_actions'] );
+
+		add_action('wp_ajax_add_multiple_to_cart', 'add_multiple_to_cart_callback');
+		add_action('wp_ajax_nopriv_add_multiple_to_cart', 'add_multiple_to_cart_callback'); // For non-logged in users
+
     }
 
 	function labtag_yith_remove_actions() {
@@ -76,6 +80,7 @@ class CartHooks {
 	 * Adding addons data with cart item
 	 */
     public function add_cart_item_data( $cart_item_data, $product_id ) {
+
 		if ( isset( $_POST ) && ! empty( $product_id ) ) {
 			$post_data = $_POST;
 		} else {
@@ -393,4 +398,25 @@ class CartHooks {
 
         return $item_hidden_metas;
     }
+
+	public function add_multiple_to_cart_callback() {
+
+		if ( isset( $_POST['products'] ) && is_array( $_POST['products'] ) ) {
+			foreach ( $_POST['products'] as $product ) {
+				$product_id = $product['product_id'];
+				$quantity   = $product['quantity'];
+				WC()->cart->add_to_cart( $product_id, $quantity );
+			}
+			if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+				$response = array(
+					'cart_url' => wc_get_cart_url()
+				);
+				echo json_encode( $response );
+			} else {
+				wp_redirect( wc_get_cart_url() );
+				exit();
+			}
+		}
+		die();
+	}
 }
