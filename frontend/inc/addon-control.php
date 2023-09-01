@@ -22,7 +22,11 @@
 				add_action( 'woocommerce_before_add_to_cart_button', [$this, 'show_customizable_options'] );
 				add_action( 'flance_woocommerce_before_add_to_cart_button', [$this, 'flance_show_customizable_options'] );
 				add_action( 'init', [ $this,'labtag_yith_remove_actions'] );
+
+				add_action('init',  [ $this, 'remove_wpc_public_script'], 999);
 			}
+
+
 		}
 
 		function labtag_yith_remove_actions() {
@@ -256,10 +260,14 @@
 				public function wpc_addon_scripts() {
 
 					wp_enqueue_script( 'wpc-addons', \Wpcafe_Pro::plugin_url() . '/core/modules/product-addons-advanced/assets/js/addons.js', ['jquery'], \Wpcafe_Pro::version(), true );
-					$params = [
+						$params = [
 						'ajax_url' => admin_url( 'admin-ajax.php' ),
 					];
 					wp_localize_script( 'wpc-addons', 'wpc_addons_params', $params );
+				}
+
+				public function remove_wpc_public_script() {
+					wp_enqueue_script( 'wpc-public', \Wpcafe_Pro::plugin_url() . '/core/modules/product-addons-advanced/assets/js/wpc-public.js', ['jquery'], \Wpcafe_Pro::version(), true, 4 );
 				}
 
 		}
